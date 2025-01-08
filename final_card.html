@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADTklEQVR4nO2ZT2jTUBzHfxvYTSe4k8w/8zBBD3oYuNMQRUbJm03StcsvURE9yIYO/wwGmuKfigoiottFwZMXURlKBV0rXnVjwmSiKDJwnvQiModNm666n7zOzlbGmnbaPGRf+EJIXpLv5+X33gsJwKL+I7287K2JnG693dvB4md2MeLu62DxyKnWWyNheRmIrMHL3s29ncwKIaO53NfJrOdXpU0gokZuyMvmC58LMXQFl4IICiN6Qho7EkLp6Umj1S4UPuvwbvY1hNKwqUmhnr3eGlfC9wS8K02URnkgE1n69TXfO4op5MTjN+VXIY3FZ4Ck9ycNtr7c+StMZIPZHjU1KUJR+ZtTAN7WROn67PnIxsL7t1eXLX0ImZZbEiZKB4sCiCmTJkpqfmlJx8oJ0J978xPItlJMHnb+BJQhM+hryOsETXpWNgAT2XjuzY8H2FqKKkeKKKEuPgGYmvQj5wnYvDTLAvB7AP6aVRA9FGVVFFNGHfT+C+pHz8x1pM951/H7a8FN0UPfmnkhePgn6moQWdSPHnqsHOZ1nhnYGWe2u7I9v6h/JUL0pHx4wW7UPiRWoR2v1qe5+Tbfx4/xNiCiUsHgnsQ6tCwwaD7zNrwtiCRbCXTzni4UftZVBtm+YAhEUFoP7rCWGs7DZ12tUxIDzO38kGjAyaLDZ8upASddDT+lBo6WGj7rKTVw1DWAZFP724UCJJvwjWsAiTpMLRQgUYcp1wD4QFwogFWtk2sAue85KbXdcehUS3veOxKIAJDciM7rvh4FA3iokLWkiLKpMGj6vioOwI8+f9G1//1SmzgA6UOB4uf/A0FxAFItzgdw1vY2TRyAZD2WMP/rYgBM31Myg7KUNWD6ruoyQFRW0uf8X0pdxNJn/V8ppiK4KavGOF/yKrwCL4LbioMRKRUgDvoDt/NDHPSPJT8B0D+5nR8SYBhx0MdK6P0xfi6IIIJwpd2M6tS+INlbNEqsQUos18mqnDHf5vv4sUybZlT5OSCaKCZP5H2Ju7Nhxnlf6OQJEFX052fFOQGUURBVFFMiDgAiIKooJvc6KKFeEFUUVboLAkSVbhBVNCC3FQQYkNtAVNGjnY0FAR7tbARRRRF/bUGAiMt/YRYFf18/AQQqMS8gBundAAAAAElFTkSuQmCC">
+    
+    <title>Красавица Соня</title>
+    <style>
+        body {
+            justify-content: center;
+            /* Горизонтальное выравнивание */
+            align-items: center;
+            /* Вертикальное выравнивание */
+            height: 100vh;
+            /* Высота экрана */
+            margin: 0;
+            /* Убираем отступы */
+            /* Фоновый цвет (если нужен) */
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 100%;
+            align-content: center;
+            text-align: center;
+            background-color: #fe9132;
+            z-index: 1003;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .shirt {
+            position: relative;
+            top: 353px;
+            left: 540px;
+            width: 300px;
+            height: 260px;
+            z-index: -1000;
+        }
+
+        .shirt-clickable-area {
+            position: absolute;
+            top: 353px;
+            left: 540px;
+            width: 300px;
+            height: 260px;
+            z-index: 5000;
+        }
+
+        .shorts-clickable-area {
+            position: absolute;
+            top: 614px;
+            left: 580px;
+            width: 220px;
+            height: 110px;
+            z-index: 1001;
+        }
+
+        .shorts {
+            position: absolute;
+            top: 614px;
+            left: 580px;
+            width: 220px;
+            height: 110px;
+            z-index: -1000;
+        }
+
+        .shoes-clickable-area {
+            position: absolute;
+            top: 151px;
+            left: 3px;
+            width: 181px;
+            height: 210px;
+            z-index: 1000;
+        }
+
+        .shoes {
+            position: absolute;
+            top: 623px;
+            left: 578px;
+            width: 266px;
+            height: 397px;
+            z-index: 1000;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .cap-clickable-area {
+            position: absolute;
+            top: 101px;
+            left: 33px;
+            width: 181px;
+            height: 210px;
+            z-index: 1000;
+        }
+
+        .colocol {
+            position: absolute;
+            top: -45px;
+            left: 1240px;
+            width: 181px;
+            height: 210px;
+            z-index: 1000;
+            background-size: cover;
+            background-position: center;
+            background-image: url("https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/колокол.png");
+        }
+
+        .colocol-clickable-area {
+            position: absolute;
+            top: -5px;
+            left: -1px;
+            width: 181px;
+            height: 210px;
+            z-index: 1000;
+        }
+
+        .cap {
+            position: absolute;
+            top: 3px;
+            left: 564px;
+            width: 296px;
+            height: 477px;
+            z-index: 1000;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tooltip {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .container:hover .tooltip {
+            display: block;
+        }
+
+        .stuff-container {
+            display: inline-block;
+            width: 1421px;
+            height: 1026px;
+            background-image: url("https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/девка.png");
+            position: relative;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            border-radius: 13px;
+        }
+
+        .flake {
+            position: absolute;
+            z-index: 2000;
+        }
+    </style>
+</head>
+
+<body onload="     generateShirtPattern();     generateShortsPattern();init();">
+
+    <audio controls autoplay loop style="display:none;">
+        <source
+            src="https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/deti-online.com_-_jingle-bells.ogg"
+            type="audio/mp3">
+        Ваш браузер не поддерживает элемент <code>audio</code>.
+    </audio>
+
+
+    <div class="image-container">
+        <div class="stuff-container">
+
+            <div class="shirt" id="shirt">
+                <canvas class="shirtcanvas" id="shirtcanvas" width="300px" height="260px"></canvas>
+            </div>
+
+            <div class="shorts" id="shorts">
+                <canvas class="shortscanvas" id="shortscanvas" width="220px" height="110px"></canvas>
+            </div>
+
+            <div class="shirt-clickable-area"></div> <!-- Область для клика по футболке -->
+            <div class="shorts-clickable-area"></div> <!-- Область для клика по футболке -->
+
+            <div class="shoes" id="shoes">
+                <div class="shoes-clickable-area"></div> <!-- Область для клика по обуви -->
+            </div>
+            <div class="cap" id="cap">
+                <div class="cap-clickable-area"></div> <!-- Область для клика по обуви -->
+            </div>
+            <div class="colocol" id="colocol">
+                <div class="colocol-clickable-area"></div>
+            </div>
+            <audio id="bellAudio"
+                src="https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/deti-online.com_-_jingle-bells.ogg">
+            </audio>
+        </div>
+    </div>
+
+
+
+
+    <div class="shoes" id="shoes">
+        <div class="shoes-clickable-area"></div> <!-- Область для клика по обуви -->
+    </div>
+    <div class="cap" id="cap">
+        <div class="cap-clickable-area"></div> <!-- Область для клика по обуви -->
+    </div>
+
+    <script>
+
+        const colocol = [
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/колокол.png"
+        ]
+        // Массив с изображениями футболок
+        const shirts = [
+
+        ];
+        const shorts = [
+
+        ];
+
+        const shoes = [
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106132838 (2).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106134001 (2).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106135040 (2).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106141412 (2).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106142924 (2).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106143546 (2).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106144107 (2).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106145032 (2).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106145517 (2).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106185550 (1).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106185817 (1).png",
+        ]
+
+        const cap = [
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106192557 (1).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106192234 (1).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106191944 (1).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106191704 (1).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106191340 (1).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106191113 (1).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106190738 (1).png",
+            "https://raw.githubusercontent.com/lima4ka/podarok.Hoviu-god/main/fita/Без названия253_20250106190206 (1).png",
+        ]
+
+        let isPlaying = false; // Флаг для отслеживания состояния воспроизведения
+        const bellAudio = document.getElementById('bellAudio');
+        const colocolClickableArea = document.querySelector('.colocol-clickable-area');
+
+        colocolClickableArea.addEventListener('click', () => {
+            if (isPlaying) {
+                bellAudio.pause(); // Останавливаем воспроизведение
+                bellAudio.currentTime = 0; // Сбрасываем к началу
+            } else {
+                bellAudio.play(); // Воспроизводим музыку
+            }
+            isPlaying = !isPlaying; // Переключаем флаг
+        });
+
+        let currentShoesIndex = 0;
+        const Shoes = document.getElementById('shoes');
+
+        Shoes.style.backgroundImage = `url('${shoes[currentShoesIndex]}')`;
+
+        const shoesClickableArea = document.querySelector('.shoes-clickable-area');
+        shoesClickableArea.addEventListener('click', () => {
+            currentShoesIndex = (currentShoesIndex + 1) % shoes.length;
+            Shoes.style.opacity = 0.7;
+            setTimeout("Shoes.style.opacity=0.3;", 50);
+            setTimeout("Shoes.style.opacity=0.0; Shoes.style.backgroundImage = `url('${shoes[currentShoesIndex]}')`;", 100);
+            setTimeout("Shoes.style.opacity=0.3;", 150);
+            setTimeout("Shoes.style.opacity=0.7;", 200);
+            setTimeout("Shoes.style.opacity=1.0;", 250);
+        });
+
+        let currentCapsIndex = 0;
+        const Caps = document.getElementById('cap');
+
+        Caps.style.backgroundImage = `url('${cap[currentCapsIndex]}')`;
+
+        const capClickableArea = document.querySelector('.cap-clickable-area');
+        capClickableArea.addEventListener('click', () => {
+            currentCapsIndex = (currentCapsIndex + 1) % cap.length;
+            Caps.style.opacity = 0.7;
+            setTimeout("Caps.style.opacity=0.3;", 50);
+            setTimeout("Caps.style.opacity=0.0; Caps.style.backgroundImage = `url('${cap[currentCapsIndex]}')`;", 100);
+            setTimeout("Caps.style.opacity=0.3;", 150);
+            setTimeout("Caps.style.opacity=0.7;", 200);
+            setTimeout("Caps.style.opacity=1.0;", 250);
+        });
+
+
+        let currentShirtIndex = 0;
+        let currentShortsIndex = 0;
+        const shirt = document.getElementById('shirt');
+        const shortsLayer = document.getElementById('shorts');
+
+        // Слушатель клика для футболки
+        const shirtClickableArea = document.querySelector('.shirt-clickable-area');
+        shirtClickableArea.addEventListener('click', () => {
+            shirt.style.opacity = 0.7;
+            setTimeout("shirt.style.opacity=0.3;", 50);
+            setTimeout("shirt.style.opacity=0.0; generateShirtPattern();", 100);
+            setTimeout("shirt.style.opacity=0.3;", 150);
+            setTimeout("shirt.style.opacity=0.7;", 200);
+            setTimeout("shirt.style.opacity=1.0;", 250);
+
+
+        });
+
+        // Слушатель клика для шорт
+        const shortsClickableArea = document.querySelector('.shorts-clickable-area');
+        shortsClickableArea.addEventListener('click', () => {
+            shortsLayer.style.opacity = 0.7;
+            setTimeout("shortsLayer.style.opacity=0.3;", 50);
+            setTimeout("shortsLayer.style.opacity=0.0; generateShortsPattern();", 200);
+            setTimeout("shortsLayer.style.opacity=0.3;", 150);
+            setTimeout("shortsLayer.style.opacity=0.7;", 200);
+            setTimeout("shortsLayer.style.opacity=1.0;", 250);
+        });
+
+        // Генерация случайного узора для футболки
+        function generateShirtPattern() {
+            const canvas = document.getElementById('shirtcanvas');
+            const ctx = canvas.getContext('2d');
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Функция для генерации случайного цвета
+            function getRandomColor() {
+                const letters = '0123456789ABCDEF';
+                let color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            // Генерация случайного фона (градиент)
+            const color1 = getRandomColor();
+            const color2 = getRandomColor();
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, color1);
+            gradient.addColorStop(1, color2);
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Определение цветов для фигур
+            const colors = ['rgba(255, 0, 0, 0.7)', 'rgba(0, 0, 255, 0.7)', 'rgba(255, 255, 255, 0.7)', 'rgba(247, 84, 84, 1)', 'rgba(84, 95, 247, 1)', 'rgba(199, 239, 255, 1)'];
+
+            // Устанавливаем количество фигур
+            const shapesCount = Math.floor(Math.random() * 50) + 20;
+
+            // Мнемонические блоки
+            const mnemonicsBlocks = [
+                ['★', '☆', '✶'], // Блок 1
+                ['♥', '♦', '♠', '♣'], // Блок 2
+                ['♪', '⧫', '†'], // Блок 3
+                ['◯', '○', '□', '◼', '△', '▽', '◊', '▴', '▾'], // Блок 4
+                ['▒', '░', '▓', '⋱', '⋰', '⋯', '⋮'], // Блок 5
+                ['❅', '❆', '✶', '✧', '✦'], // Блок 6
+            ];
+
+            const randomBlock = mnemonicsBlocks[Math.floor(Math.random() * mnemonicsBlocks.length)];
+
+            // Появление мнемоников с вероятностью 50%
+            const showMnemonics = Math.random() < 0.5;
+
+            for (let i = 0; i < shapesCount; i++) {
+                // Случайные параметры
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const size = Math.random() * 100 + 40;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+
+                if (showMnemonics) {
+                    const mnemonic = randomBlock[Math.floor(Math.random() * randomBlock.length)];
+
+                    ctx.fillStyle = color;
+                    ctx.strokeStyle = color;
+
+                    // Установка шрифта и цвета
+                    ctx.font = `${Math.floor(size)}px Arial`; // Размер текста зависит от `size`
+                    ctx.fillStyle = color;
+
+                    // Отрисовка текста
+                    ctx.fillText(mnemonic, x, y);
+                }
+            }
+
+           // const showMosaic = Math.random() < 0.5; // 50% шанс на мозаичный узор
+            if (!showMnemonics) {
+                // Функция для генерации случайных оттенков с преобладанием красного, синего и белого
+                function getRandomColor() {
+                    let hue;
+                    const randomChoice = Math.random();
+
+                    // 60% шанс на красный оттенок (0 - 30° и 330 - 360°)
+                    if (randomChoice < 0.6) {
+                        hue = Math.random() < 0.5 ? Math.random() * 30 : Math.random() * 30 + 330;
+                    }
+                    // 30% шанс на синий оттенок (180 - 240°)
+                    else if (randomChoice < 0.9) {
+                        hue = Math.random() * 60 + 180;
+                    }
+                    // 10% шанс на белый цвет (светлый оттенок)
+                    else {
+                        return `hsl(0, 0%, ${Math.random() * 30 + 70}%)`; // Белый с разной яркостью
+                    }
+
+                    const lightness = Math.floor(Math.random() * 30) + 50; // Случайная яркость от 50% до 80%
+                    return `hsl(${hue}, 100%, ${lightness}%)`; // Возвращаем цвет в формате HSL
+                }
+
+                const tileSize = 40; // Размер плитки
+
+                // Расположение плиток по всему холсту
+                for (let y = 0; y < canvas.height; y += tileSize) {
+                    for (let x = 0; x < canvas.width; x += tileSize) {
+                        const randomColor = getRandomColor(); // Получаем случайный цвет с преобладанием красного, синего и белого
+
+                        ctx.fillStyle = randomColor;
+                        ctx.fillRect(x, y, tileSize, tileSize); // Рисуем плитку
+                    }
+                }
+            }
+
+        }
+
+
+        // Генерация случайного узора для шорт
+        function generateShortsPattern() {
+            const canvas = document.getElementById('shortscanvas');
+            const ctx = canvas.getContext('2d');
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Генерация случайного градиента для фона
+            const color1 = getRandomColor();
+            const color2 = getRandomColor();
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, color1);
+            gradient.addColorStop(1, color2);
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const colors = ['rgba(255, 0, 0, 0.7)', 'rgba(0, 0, 255, 0.7)', 'rgba(255, 255, 255, 0.7)', 'rgba(247, 84, 84, 1)', 'rgba(84, 95, 247, 1)', 'rgba(199, 239, 255, 1)'];
+
+            // Устанавливаем количество фигур
+            const shapesCount = Math.floor(Math.random() * 50) + 20;
+
+            const mnemonicsBlocks = [
+                ['★', '☆', '✶'], // Блок 1
+                ['♥', '♦', '♠', '♣'], // Блок 2
+                ['♪', '⧫', '†'], // Блок 3
+                ['◯', '○', '□', '◼', '△', '▽', '◊', '▴', '▾'], // Блок 4
+                ['▒', '░', '▓', '⋱', '⋰', '⋯', '⋮'], // Блок 5
+                ['❅', '❆', '✶', '✧', '✦'], // Блок 6
+            ];
+
+            const randomBlock = mnemonicsBlocks[Math.floor(Math.random() * mnemonicsBlocks.length)];
+
+            // Генерация случайных мнемоников (с вероятностью 50% на появление)
+            const showMnemonics = Math.random() < 0.5;
+
+            if (showMnemonics) {
+                for (let i = 0; i < shapesCount; i++) {
+                    // Случайные параметры
+                    const x = Math.random() * canvas.width;
+                    const y = Math.random() * canvas.height;
+                    const size = Math.random() * 80 + 10;
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+
+                    ctx.fillStyle = color;
+                    ctx.strokeStyle = color;
+
+                    const mnemonic = randomBlock[Math.floor(Math.random() * randomBlock.length)];
+
+                    // Установка шрифта и цвета
+                    ctx.font = `${Math.floor(size)}px Arial`; // Размер текста зависит от `size`
+                    ctx.fillStyle = color;
+
+                    // Отрисовка текста
+                    ctx.fillText(mnemonic, x, y);
+                }
+            }
+
+            // 50% шанс на мозаичный узор
+            const showMosaic = Math.random() < 0.5;
+            if (showMosaic) {
+                // Функция для генерации случайных оттенков с преобладанием красного, синего и белого
+                function getRandomColor() {
+                    let hue;
+                    const randomChoice = Math.random();
+
+                    // 60% шанс на красный оттенок (0 - 30° и 330 - 360°)
+                    if (randomChoice < 0.6) {
+                        hue = Math.random() < 0.5 ? Math.random() * 30 : Math.random() * 30 + 330;
+                    }
+                    // 30% шанс на синий оттенок (180 - 240°)
+                    else if (randomChoice < 0.9) {
+                        hue = Math.random() * 60 + 180;
+                    }
+                    // 10% шанс на белый цвет (светлый оттенок)
+                    else {
+                        return `hsl(0, 0%, ${Math.random() * 30 + 70}%)`; // Белый с разной яркостью
+                    }
+
+                    const lightness = Math.floor(Math.random() * 30) + 50; // Случайная яркость от 50% до 80%
+                    return `hsl(${hue}, 100%, ${lightness}%)`; // Возвращаем цвет в формате HSL
+                }
+
+                const tileSize = 40; // Размер плитки
+
+                // Расположение плиток по всему холсту
+                for (let y = 0; y < canvas.height; y += tileSize) {
+                    for (let x = 0; x < canvas.width; x += tileSize) {
+                        const randomColor = getRandomColor(); // Получаем случайный цвет с преобладанием красного, синего и белого
+
+                        ctx.fillStyle = randomColor;
+                        ctx.fillRect(x, y, tileSize, tileSize); // Рисуем плитку
+                    }
+                }
+            }
+            // Функция для генерации случайного цвета
+            function getRandomColor() {
+                const letters = '0123456789ABCDEF';
+                let color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+        }
+
+
+        var flakes = [], bodyHeight = getDocHeight(), bodyWidth = document.body.offsetWidth;
+
+
+        function snow() {
+            for (var i = 0; i < 50; i++) {
+                var flake = flakes[i];
+
+                flake.y += flake.velY;
+
+                if (flake.y > bodyHeight - (flake.size + 6)) {
+                    flake.y = 0;
+                }
+
+                flake.el.style.top = flake.y + 'px';
+                flake.el.style.left = ~~flake.x + 'px';
+
+                flake.step += flake.stepSize;
+                flake.velX = Math.cos(flake.step);
+
+                flake.x += flake.velX;
+
+                if (flake.x > bodyWidth - 40 || flake.x < 30) {
+                    flake.y = 0;
+                }
+            }
+            setTimeout(snow, 10);
+        };
+
+
+        function init() {
+            var docFrag = document.createDocumentFragment();
+            for (var i = 0; i < 50; i++) {
+                var flake = document.createElement("div"),
+                    x = Math.floor(Math.random() * bodyWidth),
+                    y = Math.floor(Math.random() * bodyHeight),
+                    size = (Math.random() * 7) + 4,
+                    speed = (Math.random() * 1) + 0.5;
+
+                flake.style.width = size + 'px';
+                flake.style.height = size + 'px';
+                flake.style.background = "#fff";
+
+                flake.style.left = x + 'px';
+                flake.style.top = y;
+                flake.classList.add("flake");
+
+                flakes.push({
+                    el: flake,
+                    speed: speed,
+                    velY: speed,
+                    velX: 0,
+                    x: x,
+                    y: y,
+                    size: 3,
+                    stepSize: (Math.random() * 5) / 100,
+                    step: 0
+                });
+                docFrag.appendChild(flake);
+            }
+
+            document.body.appendChild(docFrag);
+            snow();
+        };
+
+        document.addEventListener("mousemove", function (e) {
+            var x = e.clientX,
+                y = e.clientY,
+                minDist = 150;
+
+            for (var i = 0; i < flakes.length; i++) {
+                var x2 = flakes[i].x,
+                    y2 = flakes[i].y;
+
+                var dist = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y));
+
+                if (dist < minDist) {
+                    rad = Math.atan2(y2, x2), angle = rad / Math.PI * 180;
+
+                    flakes[i].velX = (x2 / dist) * 0.2;
+                    flakes[i].velY = (y2 / dist) * 0.2;
+
+                    flakes[i].x += flakes[i].velX;
+                    flakes[i].y += flakes[i].velY;
+                } else {
+                    flakes[i].velY *= 0.9;
+                    flakes[i].velX;
+                    if (flakes[i].velY <= flakes[i].speed) {
+                        flakes[i].velY = flakes[i].speed;
+                    }
+                }
+            }
+        });
+
+
+
+
+
+        function getDocHeight() {
+            return Math.max(Math.max(document.body.scrollHeight, document.documentElement.scrollHeight), Math.max(document.body.offsetHeight, document.documentElement.offsetHeight), Math.max(document.body.clientHeight, document.documentElement.clientHeight));
+        }
+
+    </script>
+</body>
+
+</html>
